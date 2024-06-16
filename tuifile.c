@@ -31,6 +31,7 @@ int main() {
   size_t n = 0;
   char *line = NULL;
   ssize_t bytes_read;
+  size_t first_visible_line = 0;
 
   while ((bytes_read = getline(&line, &n, fptr)) != -1) {
     line[bytes_read - 1] = '\0';
@@ -42,8 +43,6 @@ int main() {
   }
   free(line);
   fclose(fptr);
-
-  size_t first_visible_line = 0;
 
   while (run) {
     clear();

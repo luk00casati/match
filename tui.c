@@ -3,15 +3,8 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define DO_NOTHING(x)                                                          \
-  case (x):                                                                    \
-    NULL;                                                                      \
-    break;
-
 #define ARR_SIZE(x) (sizeof(x) / sizeof((x)[0]))
 #define BUFFER 1024
-
-bool run = true;
 
 int main() {
   char *words[] = {"ciao", "luca", "come", "va"};
@@ -20,6 +13,7 @@ int main() {
   size_t inputpos = 0;
   int row, col;
   int c;
+  bool run = true;
 
   initscr();
   keypad(stdscr, TRUE);
@@ -64,9 +58,12 @@ int main() {
     case 27: // esc
       run = false;
       break;
-      // macro ignorig key
-      DO_NOTHING('\n');
-      DO_NOTHING('\t');
+    case ('\t'):
+      NULL;
+      break;
+    case ('\n'):
+      NULL;
+      break;
     case KEY_BACKSPACE:
       if (inputpos > 0) {
         inputpos--;

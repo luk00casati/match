@@ -5,6 +5,9 @@
 #include <string.h>
 #include <unistd.h>
 
+#define PROGRAM_DIR_PATH "/home/luca/mcd/pathres.txt" 
+#define PROGRAM_DIR_MATCH "/home/luca/mcd/marchres.txt" 
+
 void listdirr(FILE *file, const char *dirpath, const bool dotfiles) {
   DIR *dir;
   struct dirent *entry;
@@ -42,7 +45,7 @@ void listdirr(FILE *file, const char *dirpath, const bool dotfiles) {
 
 int main(int argc, char *argv[]) {
   FILE *fpathwr = NULL;
-  fpathwr = fopen("/home/luca/documents/c-code/fuzzy/path.txt", "w+");
+  fpathwr = fopen(PROGRAM_DIR_PATH, "w+");
   if (fpathwr == NULL) {
     fprintf(stderr, "ERROR unable to open path\n");
     return 1;
@@ -51,7 +54,7 @@ int main(int argc, char *argv[]) {
   fflush(fpathwr);
   rewind(fpathwr);
   FILE *fmatchw = NULL;
-  fmatchw = fopen("/home/luca/documents/c-code/fuzzy/matchres.txt", "w");
+  fmatchw = fopen(PROGRAM_DIR_MATCH, "w");
   if (fmatchw == NULL) {
     fprintf(stderr, "ERROR unable to open path\n");
     return 1;
